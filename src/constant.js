@@ -1,6 +1,52 @@
 class Constant {
     static REQUIED_HEADER_SIZE = 0x0000004C;
     static REQUIRED_LINK_CLSID = '00021401-0000-0000-C000-000000000046';
+    static LINK_FLAGS = [
+        'hasLinkTargetIDList',
+        'hasLinkInfo',
+        'hasName',
+        'hasRelativePath',
+        'hasWorkingDir',
+        'hasArguments',
+        'hasIconLocation',
+        'isUnicode',
+        'forceNoLinkInfo',
+        'hasExpString',
+        'runInSeparateProcess',
+        'unused1',
+        'hasDarwinID',
+        'runAsUser',
+        'hasExpIcon',
+        'noPidlAlias',
+        'unused2',
+        'runWithShimLayer',
+        'forceNoLinkTrack',
+        'enableTargetMetadata',
+        'disableLinkPathTracking',
+        'disableKnownFolderTracking',
+        'disableKnownFolderAlias',
+        'allowLinkToLink',
+        'unaliasOnSave',
+        'preferEnvironmentPath',
+        'keepLocalIDListForUNCTarget',
+    ];
+    static FILE_ATTRIBUTE_FLAGS = [
+        'FILE_ATTRIBUTE_READONLY',
+        'FILE_ATTRIBUTE_HIDDEN',
+        'FILE_ATTRIBUTE_SYSTEM',
+        'Reserved1',
+        'FILE_ATTRIBUTE_DIRECTORY',
+        'FILE_ATTRIBUTE_ARCHIVE',
+        'Reserved2',
+        'FILE_ATTRIBUTE_NORMAL',
+        'FILE_ATTRIBUTE_TEMPORARY',
+        'FILE_ATTRIBUTE_SPARSE_FILE',
+        'FILE_ATTRIBUTE_REPARSE_POINT',
+        'FILE_ATTRIBUTE_COMPRESSED',
+        'FILE_ATTRIBUTE_OFFLINE',
+        'FILE_ATTRIBUTE_NOT_CONTENT_INDEXED',
+        'FILE_ATTRIBUTE_ENCRYPTED',
+    ];
     static WINDOW_STATE_MAPPING = {
         0x00000001: 'SW_SHOWNORMAL',
         0x00000003: 'SW_SHOWMAXIMIZED',
@@ -70,6 +116,11 @@ class Constant {
         0x90: 'NUM LOCK',
         0x91: 'SCROLL LOCK',
     };
+    static MODIFIER_FLAGS = [
+        'SHIFT',
+        'CTRL',
+        'ALT',
+    ];
 }
 
 export default Object.freeze(Constant);

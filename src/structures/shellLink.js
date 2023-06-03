@@ -3,9 +3,6 @@ import Structure from '../structure.js';
 import Assert from '../assert.js';
 import Format from '../format.js';
 
-import linkFlags from './linkFlags.js';
-import fileAttributeFlags from './fileAttributeFlags.js';
-import hotKey from './hotKey.js';
 import linkTargetIDList from './linkTargetIDList.js';
 
 const shellLink = new Structure()
@@ -19,12 +16,12 @@ const shellLink = new Structure()
         length: 16,
         formatter: Format.linkCLSID,
     })
-    .nest('linkFlags', {
-        type: linkFlags,
+    .buffer('linkFlags', {
+        length: 4,
         formatter: Format.linkFlags,
     })
-    .nest('fileAttributes', {
-        type: fileAttributeFlags,
+    .buffer('fileAttributes', {
+        length: 4,
         formatter: Format.fileAttributeFlags,
     })
     .uint64('creationTime', {
@@ -41,8 +38,8 @@ const shellLink = new Structure()
     .uint32('showCommand', {
         formatter: Format.showcommand,
     })
-    .nest('hotKey', {
-        type: hotKey,
+    .buffer('hotKey', {
+        length: 2,
         formatter: Format.hotKey,
     })
     .buffer('reserved1', {

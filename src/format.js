@@ -6,6 +6,13 @@ class Format {
         const clsidHex = clsidRaw.toString('hex').toUpperCase();
         return `${clsidHex.slice(0, 8)}-${clsidHex.slice(8, 12)}-${clsidHex.slice(12, 16)}-${clsidHex.slice(16, 20)}-${clsidHex.slice(20)}`;
     }
+    static flags(flagsRaw, flags) {
+        const formatted = {};
+        flags.forEach((flag, i) => {
+            formatted[flag] = readBit(flagsRaw, i);
+        });
+        return formatted;
+    }
 
     // ShellLinkHeader
     static linkCLSID(linkCLSIDRaw) {
@@ -15,12 +22,10 @@ class Format {
         return formatted;
     }
     static linkFlags(linkFlagsRaw) {
-        delete linkFlagsRaw.padding;
-        return linkFlagsRaw;
+        return Format.flags(linkFlagsRaw, Constant.LINK_FLAGS);
     }
     static fileAttributeFlags(fileAttributeFlagsRaw) {
-        delete fileAttributeFlagsRaw.padding;
-        return fileAttributeFlagsRaw;
+        return Format.flags(fileAttributeFlagsRaw, Constant.FILE_ATTRIBUTE_FLAGS);
     }
     static filetime(ntTimestamp) {
         if(ntTimestamp === 0)
@@ -39,27 +44,32 @@ class Format {
         return formatted;
     }
     static hotKey(hotKeyRaw) {
-        const keyCode = hotKeyRaw.lowByte;
-        const key = Constant.KEY_NAME_MAPPING[keyCode];
-        const modifiers = hotKeyRaw.highByte;
+        const keyCode = hotKeyRaw[0];
+        const modifiersRaw = Buffer.from([hotKeyRaw[1]]);
+        const keyName = Constant.KEY_NAME_MAPPING[keyCode];
+        const modifiers = Format.flags(modifiersRaw, Constant.MODIFIER_FLAGS);
 
         if(keyCode === 0)
             return 'No keystroke assigned';
-        if(key === undefined)
+        if(keyName === undefined)
             throw new Error(`Invalid key code: ${keyCode}`);
-        
-        delete hotKeyRaw.highByte.padding;
 
         let formatted = '';
         for(const modifier in modifiers)
             if(modifiers[modifier])
                 formatted += `${modifier} + `;
-        formatted += key;
-        return formatted;
+        return formatted + keyName;
     }
 
     // LinkTargetIDList
     
+}
+
+function readBit(buffer, bitIndex) {
+    const byteIndex = Math.floor(bitIndex / 8);
+    const offset = bitIndex % 8;
+
+    return (buffer[byteIndex] >> offset) & 1;
 }
 
 export default Object.freeze(Format);
