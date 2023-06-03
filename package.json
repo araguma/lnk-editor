@@ -1,6 +1,6 @@
 {
   "name": "lnk-editor",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "description": "A completely overkill and unnecessary Node.js package for editing Windows shortcut files.",
   "main": "index.js",
