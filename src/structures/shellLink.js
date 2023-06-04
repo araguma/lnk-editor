@@ -3,7 +3,7 @@ import Structure from '../structure.js';
 import Assert from '../assert.js';
 import Format from '../format.js';
 
-import linkTargetIDList from './linkTargetIDList.js';
+import { linkTargetIDListChoices } from './linkTargetIDList.js';
 
 const shellLink = new Structure()
     .endianness('little')
@@ -58,10 +58,7 @@ const shellLink = new Structure()
     // LinkTargetIDList
     .choice('linkTargetIDList', {
         tag: 'linkFlags.hasLinkTargetIDList',
-        choices: {
-            0: null,
-            1: linkTargetIDList,
-        },
+        choices: linkTargetIDListChoices,
     })
 
 export default shellLink;

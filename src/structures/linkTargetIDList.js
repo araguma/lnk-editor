@@ -19,4 +19,10 @@ const linkTargetIDList = new Structure()
         assert: Assert.zero,
     });
 
+const linkTargetIDListChoices = {
+    0: null,
+    1: linkTargetIDList,
+}
+
 export default linkTargetIDList;
+export { linkTargetIDListChoices };
