@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "type": "module",
   "description": "A completely overkill and unnecessary Node.js package for editing Windows shortcut files.",
-  "main": "./dist/shell-link.js",
+  "main": "./dist/lnk-editor.js",
   "directories": {
     "test": "test"
   },
