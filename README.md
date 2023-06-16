@@ -24,8 +24,8 @@ fs.writeFileSync('./link/to/shortcut.lnk', binaryData);
 
 ## Progress
 ### Decoder
-- [x] SHELL_LINK_HEADER
-- [x] LINKTARGET_IDLIST
+- [ ] SHELL_LINK_HEADER
+- [ ] LINKTARGET_IDLIST
 - [ ] LINKINFO
 - [ ] STRING_DATA
 - [ ] EXTRA_DATA

@@ -1,7 +1,7 @@
 class Constant {
-    static REQUIED_HEADER_SIZE = 0x0000004C;
-    static REQUIRED_LINK_CLSID = '00021401-0000-0000-C000-000000000046';
-    static LINK_FLAGS = [
+    static readonly REQUIED_HEADER_SIZE = 0x0000004C;
+    static readonly REQUIRED_LINK_CLSID = '00021401-0000-0000-C000-000000000046';
+    static readonly LINK_FLAGS = [
         'hasLinkTargetIDList',
         'hasLinkInfo',
         'hasName',
@@ -30,7 +30,7 @@ class Constant {
         'preferEnvironmentPath',
         'keepLocalIDListForUNCTarget',
     ];
-    static FILE_ATTRIBUTE_FLAGS = [
+    static readonly FILE_ATTRIBUTE_FLAGS = [
         'FILE_ATTRIBUTE_READONLY',
         'FILE_ATTRIBUTE_HIDDEN',
         'FILE_ATTRIBUTE_SYSTEM',
@@ -47,12 +47,12 @@ class Constant {
         'FILE_ATTRIBUTE_NOT_CONTENT_INDEXED',
         'FILE_ATTRIBUTE_ENCRYPTED',
     ];
-    static WINDOW_STATE_MAPPING = {
+    static readonly WINDOW_STATE_MAPPING = {
         0x00000001: 'SW_SHOWNORMAL',
         0x00000003: 'SW_SHOWMAXIMIZED',
         0x00000007: 'SW_SHOWMINNOACTIVE',
     };
-    static KEY_NAME_MAPPING = {
+    static readonly KEY_NAME_MAPPING = {
         0x30: '0',
         0x31: '1',
         0x32: '2',
@@ -116,11 +116,16 @@ class Constant {
         0x90: 'NUM LOCK',
         0x91: 'SCROLL LOCK',
     };
-    static MODIFIER_FLAGS = [
+    static readonly MODIFIER_FLAGS = [
         'SHIFT',
         'CTRL',
         'ALT',
     ];
+    static readonly LINK_INFO_FLAGS = [
+        'VolumeIDAndLocalBasePath',
+        'CommonNetworkRelativeLinkAndPathSuffix',
+    ];
+    static readonly LINK_INFO_HEADER_SIZE_THRESHOLD = 0x00000024;
 }
 
 export default Object.freeze(Constant);
